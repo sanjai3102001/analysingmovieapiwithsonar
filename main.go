@@ -1,5 +1,25 @@
 package main
 
+import (
+	"go-postgres/functions"
+	"log"
+	"net/http"
+
+	"github.com/gorilla/mux"
+)
+
+func main() {
+	r := mux.NewRouter()
+	// CreateTablee()
+	// r.HandleFunc("/", functions.ReadingItem).Methods("GET")
+	r.HandleFunc("/movie/1", functions.ReadingItemid).Methods("GET")
+	r.HandleFunc("/movie", functions.CreateItem).Methods("POST")
+	r.HandleFunc("/movie/2", functions.UpdateItems).Methods("PUT")
+	r.HandleFunc("/movie/2", functions.Softdelete).Methods("DELETE")
+	log.Fatal(http.ListenAndServe("Localhost:5000", r))
+
+}
+
 // var accesskey string = "AKIASA45Q7S6M3LEBBL6"
 // var reagion string = "ap-northeast-1"
 // var secret string = "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"
