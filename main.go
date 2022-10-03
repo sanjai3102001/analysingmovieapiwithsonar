@@ -11,7 +11,6 @@ import (
 func main() {
 	r := mux.NewRouter()
 	// CreateTablee()
-	// r.HandleFunc("/", functions.ReadingItem).Methods("GET")
 	r.HandleFunc("/movie/1", functions.ReadingItemid).Methods("GET")
 	r.HandleFunc("/movie", functions.CreateItem).Methods("POST")
 	r.HandleFunc("/movie/2", functions.UpdateItems).Methods("PUT")
